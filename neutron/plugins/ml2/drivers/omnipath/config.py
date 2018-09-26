@@ -6,31 +6,31 @@ LOG = logging.getLogger(__name__)
 opt_group = cfg.OptGroup(name="omnipath_config",
                          title="Omnipath configuration")
 
-fields = [
+omnipath_opts = [
     cfg.StrOpt(
-        "IP_ADDRESS",
+        "ip_address",
         default="localhost",
         help="Host IP Address of the OPA FM Agent"
     ),
     cfg.StrOpt(
-        "USERNAME",
+        "username",
         help="Username of the OPA FM Agent"
     ),
     cfg.StrOpt(
-        "KEY",
+        "ssh_key",
         help="Private key path to access OPA FM Agent"
     ),
     cfg.StrOpt(
-        "POLL_INTERVAL",
+        "poll_interval",
         help="Interval in seconds which a full sync is done with OPA FM Agent"
     ),
     cfg.StrOpt(
-        "PKEY_RANGE",
+        "pkey_ranges",
         help="Interval in seconds which a full sync is done with OPA FM Agent"
     ),
 ]
 
-CONF = cfg.CONF
-CONF.register_group(opt_group)
-CONF.register_opts(fields, opt_group)
-CONF.default_config_files=["/etc/omnipath.conf"]
+#CONF = cfg.CONF
+#CONF.register_group(opt_group)
+cfg.CONF.register_opts(omnipath_opts, "ml2_omnipath")
+#CONF.default_config_files=["/etc/omnipath.conf"]

@@ -77,6 +77,15 @@ vlan_opts = [
                        "allocation to tenant networks."))
 ]
 
+omnipath_opts = [
+    cfg.ListOpt('network_pki_ranges',
+                default=[],
+                help=_("List of <physical_network>:<pki_min>:<pki_max> or "
+                       "<physical_network> specifying physical_network names "
+                       "usable for PKI provider and tenant networks, as "
+                       "well as ranges of PKI values on each available for "
+                       "allocation to tenant networks."))
+]
 
 def register_ml2_drivers_gre_opts(cfg=cfg.CONF):
     cfg.register_opts(gre_opts, "ml2_type_gre")
@@ -96,3 +105,6 @@ def register_ml2_drivers_vxlan_opts(cfg=cfg.CONF):
 
 def register_ml2_drivers_vlan_opts(cfg=cfg.CONF):
     cfg.register_opts(vlan_opts, "ml2_type_vlan")
+
+def register_ml2_drivers_omnipath_opts(cfg=cfg.CONF):
+    cfg.register_opts(vlan_opts, "ml2_type_omnipath")
